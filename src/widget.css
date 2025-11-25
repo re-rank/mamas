@@ -190,6 +190,31 @@
   line-height: 1.55;
 }
 
+.cw-message__text strong {
+  font-weight: 600;
+}
+
+.cw-law-link {
+  color: var(--cw-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: opacity 160ms ease;
+}
+
+.cw-law-link:hover {
+  opacity: 0.8;
+}
+
+.cw-message--user .cw-law-link {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.cw-message--user .cw-law-link:hover {
+  opacity: 1;
+}
+
 .cw-typing {
   display: inline-flex;
   align-items: center;
