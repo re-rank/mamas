@@ -101,10 +101,15 @@
     <script src="../dist/widget.js"></script>
     <script>
       window.ChatWidget?.init({
-        apiUrl: 'https://your-backend.example.com/chat',
-        title: 'AI 상담원',
-        subtitle: '24시간 언제든지 물어보세요',
-        launcherLabel: '지금 상담받기',
+        apiUrl: 'https://port-0-law-backand-mcam616226c24da5.sel5.cloudtype.app/chat',  // CloudType 백엔드
+        title: '법률 AI 상담원',
+        subtitle: '24시간 법률 상담 가능합니다',
+        launcherLabel: '법률 상담받기',
+        theme: {
+          primaryColor: '#16a34a',  // 초록색 테마
+          userBubbleColor: '#dcfce7',
+          assistantBubbleColor: '#f0fdf4',
+        },
       });
     </script>
   </body>
