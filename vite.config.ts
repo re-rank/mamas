@@ -4,6 +4,16 @@ import { resolve } from 'node:path'
 
 export default defineConfig({
   plugins: [preact()],
+  server: {
+    proxy: {
+      '/api/chat': {
+        target: 'https://port-0-law-backand-mcam616226c24da5.sel5.cloudtype.app',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/init.tsx'),
