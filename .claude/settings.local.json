@@ -11,7 +11,9 @@
       "Bash(nul)",
       "Bash(python -m uvicorn:*)",
       "Bash(node ./node_modules/vite/bin/vite.js:*)",
-      "WebFetch(domain:port-0-law-backand-mcam616226c24da5.sel5.cloudtype.app)"
+      "WebFetch(domain:port-0-law-backand-mcam616226c24da5.sel5.cloudtype.app)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
