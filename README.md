@@ -102,6 +102,138 @@ ChatWidget.init({
 
 ---
 
+## 🚀 즉시 사용 가능한 워드프레스 스크립트
+
+아래 코드를 복사해서 워드프레스에 바로 붙여넣으면 됩니다.
+
+### 복사용 스크립트 (CDN + CloudType 백엔드)
+
+워드프레스 **테마 편집기** > `functions.php` 또는 **플러그인(Insert Headers and Footers)**의 **Footer** 섹션에 붙여넣기:
+
+```html
+<!-- MAMAS AI 챗봇 위젯 -->
+<script src="https://cdn.jsdelivr.net/gh/YOUR_GITHUB_USERNAME/mamase@main/dist/widget.js"></script>
+<script>
+(function() {
+    if (typeof ChatWidget === 'undefined') {
+        console.error('ChatWidget 로드 실패');
+        return;
+    }
+
+    ChatWidget.init({
+        // ===== 백엔드 API (수정 금지) =====
+        apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+
+        // ===== 기본 설정 (필요시 수정) =====
+        title: 'AI 상담원',
+        subtitle: '24시간 언제든지 물어보세요',
+        launcherLabel: '상담하기',
+        position: 'bottom-right',
+
+        // ===== 테마 설정 (필요시 수정) =====
+        theme: {
+            primaryColor: '#2563eb',
+            userBubbleColor: '#2563eb',
+            assistantBubbleColor: '#f1f5f9',
+            backgroundColor: '#ffffff'
+        },
+
+        // ===== 초기 메시지 =====
+        initialMessages: [
+            {
+                role: 'assistant',
+                content: '안녕하세요! 무엇을 도와드릴까요?'
+            }
+        ]
+    });
+})();
+</script>
+```
+
+### PHP 함수 버전 (functions.php용)
+
+테마의 `functions.php`에 추가:
+
+```php
+/**
+ * MAMAS AI 챗봇 위젯 추가
+ */
+function mamas_add_chat_widget() {
+    ?>
+    <!-- MAMAS AI 챗봇 위젯 -->
+    <script src="<?php echo get_template_directory_uri(); ?>/js/widget.js"></script>
+    <script>
+    (function() {
+        if (typeof ChatWidget === 'undefined') return;
+
+        ChatWidget.init({
+            apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+            title: 'AI 상담원',
+            subtitle: '24시간 언제든지 물어보세요',
+            launcherLabel: '상담하기',
+            theme: {
+                primaryColor: '#2563eb'
+            },
+            initialMessages: [{
+                role: 'assistant',
+                content: '안녕하세요! 무엇을 도와드릴까요?'
+            }]
+        });
+    })();
+    </script>
+    <?php
+}
+add_action('wp_footer', 'mamas_add_chat_widget');
+```
+
+### 설치 단계 요약
+
+1. **위젯 파일 업로드**
+   ```
+   dist/widget.js → /wp-content/themes/your-theme/js/widget.js
+   ```
+
+2. **스크립트 추가** (아래 중 택 1)
+   - `functions.php`에 PHP 함수 추가
+   - Header/Footer 플러그인으로 Footer에 HTML 추가
+   - 사용자 정의 HTML 블록으로 추가
+
+3. **테스트**
+   - 사이트 새로고침 후 우측 하단에 채팅 버튼 확인
+   - 클릭하여 대화 테스트
+
+### 커스터마이징 예시
+
+```javascript
+// 법률 상담 테마
+ChatWidget.init({
+    apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+    title: '법률 AI 상담',
+    subtitle: '24시간 무료 법률 상담',
+    launcherLabel: '법률 상담받기',
+    theme: {
+        primaryColor: '#16a34a',  // 초록색
+        userBubbleColor: '#dcfce7',
+        assistantBubbleColor: '#f0fdf4'
+    }
+});
+
+// 쇼핑몰 고객센터 테마
+ChatWidget.init({
+    apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+    title: '고객센터',
+    subtitle: '주문/배송 문의',
+    launcherLabel: '문의하기',
+    theme: {
+        primaryColor: '#f97316',  // 주황색
+        userBubbleColor: '#ffedd5',
+        assistantBubbleColor: '#fff7ed'
+    }
+});
+```
+
+---
+
 ## 일반 웹사이트에서 사용하기
 
 HTML 파일의 `</body>` 태그 직전에 다음 코드를 추가합니다:
