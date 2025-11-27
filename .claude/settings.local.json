@@ -1,7 +1,20 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(find:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite build)",
+      "Bash(npm install)",
+      "Bash(./node_modules/.bin/tsc:*)",
+      "Bash(nul)",
+      "Bash(python -m uvicorn:*)",
+      "Bash(node ./node_modules/vite/bin/vite.js:*)",
+      "WebFetch(domain:port-0-law-backand-mcam616226c24da5.sel5.cloudtype.app)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

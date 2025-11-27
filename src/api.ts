@@ -30,7 +30,8 @@ export async function sendMessage({
   })
 
   if (!response.ok) {
-    throw new Error(`API 요청 실패 (${response.status})`)
+    const errorText = await response.text()
+    throw new Error(`API 요청 실패 (${response.status}): ${errorText}`)
   }
 
   const data = await parseResponse(response)
@@ -46,18 +47,20 @@ export async function sendMessage({
   }
 }
 
-async function parseResponse(response: Response) {
+interface BackendResponse {
+  answer?: string
+  reply?: string
+  message?: string
+  conversationId?: string
+  [key: string]: unknown
+}
+
+async function parseResponse(response: Response): Promise<BackendResponse> {
   const text = await response.text()
   try {
-    return JSON.parse(text) as {
-      answer?: string
-      reply?: string
-      message?: string
-      conversationId?: string
-      [key: string]: unknown
-    }
+    return JSON.parse(text)
   } catch {
-    throw new Error('백엔드 응답을 JSON 으로 파싱할 수 없습니다.')
+    throw new Error('백엔드 응답을 JSON으로 파싱할 수 없습니다.')
   }
 }
 
@@ -66,4 +69,3 @@ function cleanUndefined<T extends Record<string, unknown>>(obj: T) {
     Object.entries(obj).filter(([, value]) => value !== undefined),
   )
 }
-
