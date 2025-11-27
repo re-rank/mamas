@@ -13,7 +13,7 @@ export async function sendMessage({
   conversationId,
   history,
 }: SendMessageParams) {
-  const { apiUrl, metadata, headers } = options
+  const { apiUrl, headers } = options
 
   const response = await fetch(apiUrl, {
     method: 'POST',
@@ -22,10 +22,10 @@ export async function sendMessage({
       ...headers,
     },
     body: JSON.stringify(cleanUndefined({
-      conversationId,
       message,
-      history: history.map(({ role, content }) => ({ role, content })),
-      metadata,
+      conversation_history: history.map(({ role, content }) => ({ role, content })),
+      top_k: 5,
+      temperature: 0.7,
     })),
   })
 
@@ -34,15 +34,15 @@ export async function sendMessage({
   }
 
   const data = await parseResponse(response)
-  const reply = data.reply ?? data.message
+  const reply = data.answer ?? data.reply ?? data.message
 
   if (!reply || typeof reply !== 'string') {
-    throw new Error('백엔드 응답에 reply 필드가 없습니다.')
+    throw new Error('백엔드 응답에 answer 필드가 없습니다.')
   }
 
   return {
     reply,
-    conversationId: typeof data.conversationId === 'string' ? data.conversationId : conversationId,
+    conversationId,
   }
 }
 
@@ -50,6 +50,7 @@ async function parseResponse(response: Response) {
   const text = await response.text()
   try {
     return JSON.parse(text) as {
+      answer?: string
       reply?: string
       message?: string
       conversationId?: string
