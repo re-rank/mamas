@@ -17,7 +17,8 @@
       "Bash(git commit:*)",
       "Bash(node -e \"const { execSync } = require(''child_process''); try { execSync(''npm run build'', { stdio: ''inherit'' }); } catch(e) { console.log(''Error:'', e.message); }\")",
       "Bash(npx vite build:*)",
-      "WebFetch(domain:mamasgroupcoltd.com)"
+      "WebFetch(domain:mamasgroupcoltd.com)",
+      "Bash(timeout /t 30 /nobreak)"
     ],
     "deny": [],
     "ask": []
