@@ -122,7 +122,7 @@ ChatWidget.init({
 
     ChatWidget.init({
         // ===== 백엔드 API (수정 금지) =====
-        apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+        apiUrl: 'https://mamasgroupcoltd.com/api/chat',
 
         // ===== 기본 설정 (필요시 수정) =====
         title: 'AI 상담원',
@@ -167,7 +167,7 @@ function mamas_add_chat_widget() {
         if (typeof ChatWidget === 'undefined') return;
 
         ChatWidget.init({
-            apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+            apiUrl: 'https://mamasgroupcoltd.com/api/chat',
             title: 'AI 상담원',
             subtitle: '24시간 언제든지 물어보세요',
             launcherLabel: '상담하기',
@@ -207,7 +207,7 @@ add_action('wp_footer', 'mamas_add_chat_widget');
 ```javascript
 // 법률 상담 테마
 ChatWidget.init({
-    apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+    apiUrl: 'https://mamasgroupcoltd.com/api/chat',
     title: '법률 AI 상담',
     subtitle: '24시간 무료 법률 상담',
     launcherLabel: '법률 상담받기',
@@ -220,7 +220,7 @@ ChatWidget.init({
 
 // 쇼핑몰 고객센터 테마
 ChatWidget.init({
-    apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+    apiUrl: 'https://mamasgroupcoltd.com/api/chat',
     title: '고객센터',
     subtitle: '주문/배송 문의',
     launcherLabel: '문의하기',
