@@ -14,7 +14,13 @@
       "WebFetch(domain:port-0-law-backand-mcam616226c24da5.sel5.cloudtype.app)",
       "Bash(npm install:*)",
       "Bash(curl:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(node -e \"const { execSync } = require(''child_process''); try { execSync(''npm run build'', { stdio: ''inherit'' }); } catch(e) { console.log(''Error:'', e.message); }\")",
+      "Bash(npx vite build:*)",
+      "WebFetch(domain:mamasgroupcoltd.com)",
+      "Bash(timeout /t 30 /nobreak)",
+      "Bash(npx vite:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
