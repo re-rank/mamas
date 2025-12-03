@@ -106,6 +106,34 @@ ChatWidget.init({
 
 아래 코드를 복사해서 워드프레스에 바로 붙여넣으면 됩니다.
 
+### ⭐ 간단 복사용 (권장)
+
+워드프레스 **Insert Headers and Footers** 플러그인의 **Footer** 섹션에 붙여넣기:
+
+```html
+<!-- MAMAS AI 챗봇 위젯 -->
+<script src="https://cdn.jsdelivr.net/gh/YOUR_GITHUB_USERNAME/mamas@main/dist/widget.js"></script>
+<script>
+ChatWidget.init({
+    apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
+    title: 'AI 상담원',
+    subtitle: '24시간 언제든지 물어보세요',
+    launcherLabel: '상담하기',
+    theme: {
+        primaryColor: '#2563eb'
+    },
+    initialMessages: [{
+        role: 'assistant',
+        content: '안녕하세요! 무엇을 도와드릴까요?'
+    }]
+});
+</script>
+```
+
+> **중요**: `YOUR_GITHUB_USERNAME`을 실제 GitHub 사용자명으로 변경하거나, widget.js를 직접 호스팅한 URL로 변경하세요.
+
+---
+
 ### 복사용 스크립트 (CDN + CloudType 백엔드)
 
 워드프레스 **테마 편집기** > `functions.php` 또는 **플러그인(Insert Headers and Footers)**의 **Footer** 섹션에 붙여넣기:
@@ -122,7 +150,7 @@ ChatWidget.init({
 
     ChatWidget.init({
         // ===== 백엔드 API (수정 금지) =====
-        apiUrl: 'https://mamasgroupcoltd.com/api/chat',
+        apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
 
         // ===== 기본 설정 (필요시 수정) =====
         title: 'AI 상담원',
@@ -167,7 +195,7 @@ function mamas_add_chat_widget() {
         if (typeof ChatWidget === 'undefined') return;
 
         ChatWidget.init({
-            apiUrl: 'https://mamasgroupcoltd.com/api/chat',
+            apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
             title: 'AI 상담원',
             subtitle: '24시간 언제든지 물어보세요',
             launcherLabel: '상담하기',
@@ -207,7 +235,7 @@ add_action('wp_footer', 'mamas_add_chat_widget');
 ```javascript
 // 법률 상담 테마
 ChatWidget.init({
-    apiUrl: 'https://mamasgroupcoltd.com/api/chat',
+    apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
     title: '법률 AI 상담',
     subtitle: '24시간 무료 법률 상담',
     launcherLabel: '법률 상담받기',
@@ -220,7 +248,7 @@ ChatWidget.init({
 
 // 쇼핑몰 고객센터 테마
 ChatWidget.init({
-    apiUrl: 'https://mamasgroupcoltd.com/api/chat',
+    apiUrl: 'https://port-0-mamas-be-mieafczw4deece5f.sel3.cloudtype.app/api/chat',
     title: '고객센터',
     subtitle: '주문/배송 문의',
     launcherLabel: '문의하기',
