@@ -1,4 +1,5 @@
-import { Fragment, JSX } from 'preact'
+import { Fragment } from 'preact'
+import type { JSX } from 'preact'
 import type { ChatMessage } from '../types'
 
 interface MessageBubbleProps {
@@ -100,14 +101,10 @@ function parseLawLink(html: string, key: string): JSX.Element {
   const article = articleMatch ? articleMatch[1] : ''
   const apiUrl = apiUrlMatch ? decodeURIComponent(apiUrlMatch[1]) : ''
 
-  // 클릭 시 법령 정보 표시 또는 외부 링크로 이동
+  // 클릭 시 국가법령정보센터로 이동
   const handleClick = (e: MouseEvent) => {
     e.preventDefault()
-
-    // 국가법령정보센터 검색 URL 생성
-    const searchQuery = article ? `${lawName} ${article}` : lawName
     const lawUrl = `https://www.law.go.kr/법령/${encodeURIComponent(lawName)}`
-
     window.open(lawUrl, '_blank', 'noopener,noreferrer')
   }
 
