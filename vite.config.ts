@@ -18,13 +18,14 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/init.tsx'),
       name: 'ChatWidget',
-      fileName: () => 'widget.js',
+      fileName: 'widget',
       formats: ['iife'],
     },
     cssCodeSplit: false,
     rollupOptions: {
       output: {
         inlineDynamicImports: true,
+        entryFileNames: 'widget.js',
       },
     },
   },
