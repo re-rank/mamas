@@ -106,6 +106,50 @@ ChatWidget.init({
 
 아래 코드를 복사해서 워드프레스에 바로 붙여넣으면 됩니다.
 
+### ⭐ 복사해서 바로 사용 (권장)
+
+워드프레스 **외모 > 테마 파일 편집기 > footer.php** 또는 **플러그인(Insert Headers and Footers)**의 **Footer** 섹션에 붙여넣기:
+
+```html
+<!-- MAMAS AI 챗봇 위젯 - 복사해서 바로 사용 -->
+<script src="https://cdn.jsdelivr.net/gh/attrest/mamas@main/dist/widget.js"></script>
+<script>
+(function() {
+    function initWidget() {
+        if (typeof ChatWidget === 'undefined') {
+            setTimeout(initWidget, 100);
+            return;
+        }
+        ChatWidget.init({
+            apiUrl: 'https://port-0-law-backand-mcam616226c24da5.sel5.cloudtype.app/api/chat',
+            title: 'AI 상담원',
+            subtitle: '24시간 언제든지 물어보세요',
+            launcherLabel: '상담하기',
+            position: 'bottom-right',
+            theme: {
+                primaryColor: '#2563eb',
+                userBubbleColor: '#2563eb',
+                assistantBubbleColor: '#f1f5f9',
+                backgroundColor: '#ffffff'
+            },
+            initialMessages: [{
+                role: 'assistant',
+                content: '안녕하세요! 무엇을 도와드릴까요?'
+            }]
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initWidget);
+    } else {
+        initWidget();
+    }
+})();
+</script>
+<!-- MAMAS AI 챗봇 위젯 끝 -->
+```
+
+---
+
 ### 복사용 스크립트 (CDN + CloudType 백엔드)
 
 워드프레스 **테마 편집기** > `functions.php` 또는 **플러그인(Insert Headers and Footers)**의 **Footer** 섹션에 붙여넣기:
